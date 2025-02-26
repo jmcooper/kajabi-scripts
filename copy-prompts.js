@@ -1,5 +1,5 @@
 document.addEventListener("copy", (event) => {
-  event.clipboardData.setData(document.getSelection().toString());
+  event.clipboardData.setData("text/plain", document.getSelection().toString());
   highlightPromptAndSelectNextPrompt(document.getSelection().focusNode);
 });
 
