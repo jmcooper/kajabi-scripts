@@ -1,6 +1,8 @@
 document.addEventListener("copy", (event) => {
+  console.log('selected text', document.getSelection().toString())
   event.clipboardData.setData("text/plain", document.getSelection().toString());
   highlightPromptAndSelectNextPrompt(document.getSelection().focusNode);
+  return true;
 });
 
 function formatClipboardButtons() {
@@ -55,14 +57,12 @@ function showPopup(text) {
 function copyToClipboard(copyButton) {
   const parentParagraphElement = copyButton.closest("p");
   const currentPromptElement = parentParagraphElement.nextElementSibling?.querySelector("em");
-  console.log('copying to clipboard', currentPromptElement);
   navigator.clipboard.writeText(currentPromptElement.innerText)
     .then(() => { showPopup('Copied to clipboard!'); highlightPromptAndSelectNextPrompt(currentPromptElement); })
     .catch(() => showPopup('Oops, failed to copy to clipboard. :('))
 }
 
 function highlightPromptAndSelectNextPrompt(currentPromptElement) {
-  console.log('here', currentPromptElement);
   window.getSelection().removeAllRanges();
   highlightText(currentPromptElement);
 
@@ -77,7 +77,6 @@ function highlightPromptAndSelectNextPrompt(currentPromptElement) {
 function highlightText(currentPromptElement) {
   if (!currentPromptElement) return;
 
-  console.log('highlighting', currentPromptElement);
   currentPromptElement.style.backgroundColor = "#ffeb3b"; // Yellow highlight
   currentPromptElement.style.transition = "background-color 0.5s ease-in-out";
 
@@ -102,10 +101,8 @@ function findNextPromptElement(currentPromptElement) {
   const parentPElement = currentPromptElement.closest('p');
   let nextElement = parentPElement;
 
-  console.log('finding next', nextElement);
   while (nextElement) {
     nextElement = nextElement.nextElementSibling;
-    console.log('nextElement', nextElement);
 
     // Check if the element contains a <strong>Prompt</strong>
     if (nextElement?.querySelector("strong")?.innerText.includes("Prompt")) {
@@ -114,7 +111,6 @@ function findNextPromptElement(currentPromptElement) {
       if (nextEm) return nextEm;
     }
   }
-  console.log('exit while')
 }
 
 function createCopySvg() {
