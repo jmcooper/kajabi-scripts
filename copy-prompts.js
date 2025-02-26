@@ -1,6 +1,8 @@
-document.addEventListener("copy", (event) => {
+document.addEventListener("copy", async (event) => {
   console.log('selected text', document.getSelection().toString())
   event.clipboardData.setData("text/plain", document.getSelection().toString());
+  const text = await navigator.clipboard.readText()
+  console.log('clipboard text', text)
   highlightPromptAndSelectNextPrompt(document.getSelection().focusNode);
   return true;
 });
