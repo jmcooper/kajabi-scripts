@@ -1,14 +1,14 @@
 button.copy {
-  position: "absolute";
-  font-size: "16px";
-  top: "-4px";
-  left: leftPostion;
-  background: "#41a3ff";
-  color: "white";
-  border: "none";
-  padding: "5px 10px";
-  cursor: "pointer";
-  border-radius: "3px"
+  position: absolute;
+  font-size: 16px;
+  top: -4px;
+  left: 50px;
+  background: #41a3ff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
 button.copy:before {
