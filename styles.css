@@ -1,14 +1,18 @@
-button.copy {
+button.copy, button.copy-o {
   position: absolute;
   font-size: 16px;
   top: -4px;
-  left: 50px;
+  left: 75px;
   background: #41a3ff;
   color: white;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 3px;
+}
+
+button.copy-o {
+  left: 150px;
 }
 
 button.copy:before {
