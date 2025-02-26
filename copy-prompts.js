@@ -68,7 +68,7 @@ function highlightPromptAndSelectNextPrompt(currentPromptElement) {
   const nextPromptElement = findNextPromptElement(currentPromptElement);
   setTimeout(() => {
     selectText(nextPromptElement);
-    nextPromptElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    nextPromptElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
 
   }, 2000);
 }
